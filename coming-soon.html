@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coming Soon — The Arcane Emporium</title>
+    <meta name="description" content="Something magical is being prepared. Join the list and be the first to know when the next secret arrives." />
+    <link rel="canonical" href="coming-soon.html" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/dark-mode.css" rel="stylesheet" />
+    <link href="assets/css/rtl.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="ae-skip" href="#main">Skip to content</a>
+    <div data-ae-header></div>
+
+    <main id="main" class="ae-section ae-section--full ae-dark-stage">
+      <div class="ae-container">
+        <div class="ae-door-wrap">
+          <div class="ae-emboss">
+            <h1 class="m-0">Something magical is being prepared…</h1>
+            <p class="mt-3 mb-4" style="font-size:18px;max-width:70ch;margin-inline:auto">
+              The workbench is covered. The curtain is drawn. A new secret arrives soon.
+            </p>
+
+            <div class="ae-grid-2x2" data-ae-countdown data-ae-target="2026-06-01T00:00:00">
+              <div class="ae-card ae-surface text-center">
+                <p class="m-0" style="font-weight:800">Days</p>
+                <p class="mt-2 mb-0" style="font-size:34px" data-ae-cd-days>0</p>
+              </div>
+              <div class="ae-card ae-surface text-center">
+                <p class="m-0" style="font-weight:800">Hours</p>
+                <p class="mt-2 mb-0" style="font-size:34px" data-ae-cd-hours>00</p>
+              </div>
+              <div class="ae-card ae-surface text-center">
+                <p class="m-0" style="font-weight:800">Minutes</p>
+                <p class="mt-2 mb-0" style="font-size:34px" data-ae-cd-mins>00</p>
+              </div>
+              <div class="ae-card ae-surface text-center">
+                <p class="m-0" style="font-weight:800">Seconds</p>
+                <p class="mt-2 mb-0" style="font-size:34px" data-ae-cd-secs>00</p>
+              </div>
+            </div>
+
+            <div class="mt-4 ae-card ae-surface">
+              <h2 class="h3 m-0">Be the first to know</h2>
+              <p class="mt-2 mb-3">We’ll send one email. No spam. No exposure.</p>
+              <form class="d-grid gap-2" data-ae-validate novalidate>
+                <label class="fw-bold" for="soonEmail">Email</label>
+                <input class="ae-form-control" id="soonEmail" name="email" type="email" placeholder="you@domain.com" required />
+                <div class="invalid-feedback">Enter a valid email address.</div>
+                <button class="ae-btn" type="submit">Notify me</button>
+              </form>
+            </div>
+
+            <div class="mt-4">
+              <a class="ae-btn ae-btn--ghost" href="index.html">Return to the hidden door</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div data-ae-footer></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

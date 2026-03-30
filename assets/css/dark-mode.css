@@ -1,0 +1,16 @@
+:root[data-theme="dark"]{
+  --ae-bg:#12111A;
+  --ae-fg:#FFFFFF;
+  --ae-surface:#12111A;
+  --ae-border:var(--ae-fg);
+  color-scheme:dark;
+}
+
+:root[data-theme="dark"] .ae-dark-stage{
+  background:#000000;
+  color:#FFFFFF;
+}
+
+:root[data-theme="dark"] .ae-offcanvas{
+  border-inline-start-color:#FFFFFF;
+}

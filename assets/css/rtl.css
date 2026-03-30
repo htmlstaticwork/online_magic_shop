@@ -1,0 +1,4 @@
+:root[dir="rtl"] body{direction:rtl}
+:root[dir="rtl"] .ae-path{text-align:start}
+:root[dir="rtl"] .ae-offcanvas{border-inline-start:0;border-inline-end:2px solid var(--ae-border)}
+:root[dir="rtl"] .ae-backtop{inset-inline-end:auto;inset-inline-start:16px}
