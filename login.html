@@ -50,7 +50,12 @@
               </div>
               <div>
                 <label class="fw-bold" for="loginPassword">Password</label>
-                <input class="ae-form-control w-100" id="loginPassword" name="password" type="password" required minlength="8" autocomplete="current-password" />
+                <div class="ae-password-group">
+                  <input class="ae-form-control w-100" id="loginPassword" name="password" type="password" required minlength="8" autocomplete="current-password" />
+                  <button class="ae-password-toggle" type="button" aria-label="Show password" aria-controls="loginPassword" data-ae-password-toggle aria-pressed="false">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                  </button>
+                </div>
                 <div class="invalid-feedback">Enter your password (at least 8 characters).</div>
               </div>
               <button class="ae-btn" type="submit">Login</button>

@@ -432,6 +432,26 @@
     window.setInterval(tick, 1000);
   };
 
+  const initPasswordToggle = () => {
+    document.querySelectorAll("[data-ae-password-toggle]").forEach((btn) => {
+      const targetId = btn.getAttribute("aria-controls");
+      const input = document.getElementById(targetId);
+      if (!input) return;
+
+      btn.addEventListener("click", () => {
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        btn.setAttribute("aria-pressed", isPassword ? "true" : "false");
+        const icon = btn.querySelector("i");
+        if (icon) {
+          icon.className = isPassword ? "bi bi-eye-slash" : "bi bi-eye";
+        }
+        const label = isPassword ? "Hide password" : "Show password";
+        btn.setAttribute("aria-label", label);
+      });
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     injectChrome();
     initThemeAndDir();
@@ -444,5 +464,6 @@
     initBlogFilter();
     initShopFilter();
     initCountdown();
+    initPasswordToggle();
   });
 })();

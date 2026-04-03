@@ -56,6 +56,8 @@ h3{font-size:clamp(24px,2.4vw,28px);line-height:1.25}
 .ae-surface{background:var(--ae-surface)}
 .ae-rounded{border-radius:var(--ae-radius)}
 .ae-rounded-sm{border-radius:var(--ae-radius-sm)}
+.ae-rounded-start{border-radius:var(--ae-radius) 0 0 var(--ae-radius)}
+.ae-rounded-end{border-radius:0 var(--ae-radius) var(--ae-radius) 0}
 
 .ae-btn{
   display:inline-flex;
@@ -478,6 +480,39 @@ h3{font-size:clamp(24px,2.4vw,28px);line-height:1.25}
 }
 .accordion-button:not(.collapsed){color:var(--ae-accent);background:var(--ae-bg)}
 .accordion-body{background:var(--ae-bg);color:var(--ae-fg)}
+
+.ae-password-group{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.ae-password-group .ae-form-control{
+  padding-inline-end:48px;
+}
+.ae-password-toggle{
+  position:absolute;
+  inset-inline-end:10px;
+  background:transparent;
+  border:none;
+  padding:0;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--ae-fg);
+  opacity:0.6;
+  transition:opacity 0.2s ease;
+  z-index:2;
+}
+.ae-password-toggle:hover,.ae-password-toggle:focus{
+  opacity:1;
+  color:var(--ae-accent);
+}
+.ae-password-toggle i{
+  font-size:1.2rem;
+  line-height:1;
+}
 
 @media (prefers-reduced-motion:reduce){
   .ae-shimmer::after{animation:none}
