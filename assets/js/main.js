@@ -41,8 +41,10 @@
     });
 
     document.querySelectorAll("[data-ae-offcanvas]").forEach((el) => {
-      el.classList.remove("offcanvas-start", "offcanvas-end");
-      el.classList.add(dir === "rtl" ? "offcanvas-end" : "offcanvas-start");
+      // Bootstrap 5 offcanvas-start is RTL-aware (left in LTR, right in RTL).
+      // We'll keep it as offcanvas-start to maintain logical alignment.
+      el.classList.add("offcanvas-start");
+      el.classList.remove("offcanvas-end");
     });
   };
 
@@ -56,8 +58,9 @@
 
     const navLinks = [
       { key: "home", href: "index.html", label: "Home" },
-      { key: "shop", href: "home-2.html", label: "Shop" },
-      { key: "categories", href: "services.html", label: "Categories" },
+      { key: "home2", href: "home2.html", label: "Home 2" },
+      { key: "shop", href: "services.html", label: "Shop" },
+      { key: "catlog", href: "catlog.html", label: "Catalog" },
       { key: "about", href: "about.html", label: "About" },
       { key: "blog", href: "blog.html", label: "Blog" },
       { key: "contact", href: "contact.html", label: "Contact" },
@@ -75,10 +78,6 @@
       <header class="ae-header" role="banner">
         <div class="ae-container ae-header-inner">
           <div class="ae-mobile w-100 align-items-center justify-content-between">
-            <button class="ae-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#aeNav" aria-controls="aeNav" aria-label="Open navigation">
-              <i class="bi bi-list" aria-hidden="true"></i>
-            </button>
-
             <a class="ae-logo-wrap" href="index.html" aria-label="The Arcane Emporium home">
               <svg class="ae-logo ae-logo--small" aria-hidden="true" focusable="false">
                 <use href="assets/images/logo.svg#ae-logo"></use>
@@ -90,6 +89,9 @@
                 <i class="bi bi-sun-fill" aria-hidden="true"></i>
               </button>
               <button class="ae-icon-btn" type="button" data-ae-dir-toggle aria-label="Toggle direction" aria-pressed="false">LTR</button>
+              <button class="ae-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#aeNav" aria-controls="aeNav" aria-label="Open navigation">
+                <i class="bi bi-list" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
 
@@ -117,14 +119,8 @@
           </div>
         </div>
 
-        <div class="offcanvas ae-offcanvas offcanvas-start" tabindex="-1" id="aeNav" data-ae-offcanvas aria-labelledby="aeNavLabel">
-          <div class="offcanvas-header">
-            <div class="d-flex align-items-center gap-2">
-              <svg class="ae-logo ae-logo--small" aria-hidden="true" focusable="false">
-                <use href="assets/images/logo.svg#ae-logo"></use>
-              </svg>
-              <h2 class="h5 m-0" id="aeNavLabel">Navigation</h2>
-            </div>
+        <div class="offcanvas ae-offcanvas offcanvas-start" tabindex="-1" id="aeNav" data-ae-offcanvas>
+          <div class="offcanvas-header justify-content-end">
             <button class="ae-icon-btn" type="button" data-bs-dismiss="offcanvas" aria-label="Close navigation">
               <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
@@ -373,6 +369,33 @@
     apply();
   };
 
+  const initShopFilter = () => {
+    const grid = document.getElementById("shopGrid");
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll(".ae-card"));
+    const search = document.getElementById("shopSearch");
+    const filter = document.getElementById("shopFilter");
+
+    const apply = () => {
+      const q = (search?.value ?? "").trim().toLowerCase();
+      const cat = filter?.value ?? "all";
+
+      cards.forEach((card) => {
+        const title = (card.querySelector("h3")?.textContent ?? "").toLowerCase();
+        const pCat = card.getAttribute("data-category") ?? "";
+        const matchesCat = cat === "all" || pCat === cat;
+        const matchesQ = q.length === 0 || title.includes(q);
+        const show = matchesCat && matchesQ;
+        card.style.display = show ? "flex" : "none";
+      });
+    };
+
+    search?.addEventListener("input", apply);
+    filter?.addEventListener("change", apply);
+    apply();
+  };
+
   const initCountdown = () => {
     const el = document.querySelector("[data-ae-countdown]");
     if (!el) return;
@@ -419,6 +442,7 @@
     initValidation();
     initPasswordConfirm();
     initBlogFilter();
+    initShopFilter();
     initCountdown();
   });
 })();

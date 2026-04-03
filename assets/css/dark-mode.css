@@ -1,6 +1,7 @@
 :root[data-theme="dark"]{
-  --ae-bg:#12111A;
+  --ae-bg:#000000;
   --ae-fg:#FFFFFF;
+  --ae-accent:#9B2C2C;
   --ae-surface:#12111A;
   --ae-border:var(--ae-fg);
   color-scheme:dark;
@@ -12,5 +13,5 @@
 }
 
 :root[data-theme="dark"] .ae-offcanvas{
-  border-inline-start-color:#FFFFFF;
+  border-inline-end-color:#FFFFFF;
 }

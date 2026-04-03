@@ -1,4 +1,82 @@
-:root[dir="rtl"] body{direction:rtl}
+:root[dir="rtl"] body{direction:rtl;width:100%;max-width:100%;position:relative}
+:root[dir="rtl"] html{overflow-x:hidden;width:100%;max-width:100%}
+:root[dir="rtl"] .text-start{text-align:right !important}
+:root[dir="rtl"] .text-end{text-align:left !important}
 :root[dir="rtl"] .ae-path{text-align:start}
-:root[dir="rtl"] .ae-offcanvas{border-inline-start:0;border-inline-end:2px solid var(--ae-border)}
-:root[dir="rtl"] .ae-backtop{inset-inline-end:auto;inset-inline-start:16px}
+:root[dir="rtl"] .ae-door-panel{transform-origin:100% 50%}
+:root[dir="rtl"] .ae-door-open .ae-door-panel{transform:rotateY(110deg)}
+
+/* Fix Bootstrap margins/paddings in RTL since we are not using the RTL version of Bootstrap */
+:root[dir="rtl"] .ms-auto{margin-inline-start:auto !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-auto{margin-inline-end:auto !important;margin-inline-start:0 !important}
+:root[dir="rtl"] .ms-1{margin-inline-start:0.25rem !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-1{margin-inline-end:0.25rem !important;margin-inline-start:0 !important}
+:root[dir="rtl"] .ms-2{margin-inline-start:0.5rem !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-2{margin-inline-end:0.5rem !important;margin-inline-start:0 !important}
+:root[dir="rtl"] .ms-3{margin-inline-start:1rem !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-3{margin-inline-end:1rem !important;margin-inline-start:0 !important}
+:root[dir="rtl"] .ms-4{margin-inline-start:1.5rem !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-4{margin-inline-end:1.5rem !important;margin-inline-start:0 !important}
+:root[dir="rtl"] .ms-5{margin-inline-start:3rem !important;margin-inline-end:0 !important}
+:root[dir="rtl"] .me-5{margin-inline-end:3rem !important;margin-inline-start:0 !important}
+
+:root[dir="rtl"] .ps-1{padding-inline-start:0.25rem !important;padding-inline-end:0 !important}
+:root[dir="rtl"] .pe-1{padding-inline-end:0.25rem !important;padding-inline-start:0 !important}
+:root[dir="rtl"] .ps-2{padding-inline-start:0.5rem !important;padding-inline-end:0 !important}
+:root[dir="rtl"] .pe-2{padding-inline-end:0.5rem !important;padding-inline-start:0 !important}
+:root[dir="rtl"] .ps-3{padding-inline-start:1rem !important;padding-inline-end:0 !important}
+:root[dir="rtl"] .pe-3{padding-inline-end:1rem !important;padding-inline-start:0 !important}
+:root[dir="rtl"] .ps-4{padding-inline-start:1.5rem !important;padding-inline-end:0 !important}
+:root[dir="rtl"] .pe-4{padding-inline-end:1.5rem !important;padding-inline-start:0 !important}
+:root[dir="rtl"] .ps-5{padding-inline-start:3rem !important;padding-inline-end:0 !important}
+:root[dir="rtl"] .pe-5{padding-inline-end:3rem !important;padding-inline-start:0 !important}
+
+:root[dir="rtl"] .row{
+  margin-right:calc(-.5 * var(--bs-gutter-x)) !important;
+  margin-left:calc(-.5 * var(--bs-gutter-x)) !important;
+}
+
+:root[dir="rtl"] .offset-lg-1 { margin-right: 8.33333333%; margin-left: 0 !important; }
+:root[dir="rtl"] .offset-lg-2 { margin-right: 16.66666667%; margin-left: 0 !important; }
+:root[dir="rtl"] .offset-lg-3 { margin-right: 25%; margin-left: 0 !important; }
+:root[dir="rtl"] .offset-lg-4 { margin-right: 33.33333333%; margin-left: 0 !important; }
+:root[dir="rtl"] .offset-lg-5 { margin-right: 41.66666667%; margin-left: 0 !important; }
+:root[dir="rtl"] .offset-lg-6 { margin-right: 50%; margin-left: 0 !important; }
+
+/* Mirror border utilities */
+:root[dir="rtl"] .border-start-0 { border-right-width: 0 !important; border-left-width: 2px !important; }
+:root[dir="rtl"] .border-end-0 { border-left-width: 0 !important; border-right-width: 2px !important; }
+:root[dir="rtl"] .ae-border-end-0 { border-left-width: 0 !important; border-right-width: 2px !important; }
+
+/* RTL specific fixes for input groups */
+:root[dir="rtl"] .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-inline-start: -2px;
+  margin-inline-end: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+:root[dir="rtl"] .input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+/* Ensure forms and interactive elements don't overflow */
+:root[dir="rtl"] .ae-form-control,
+:root[dir="rtl"] .ae-btn {
+  max-width: 100%;
+}
+
+:root[dir="rtl"] .ae-feature,
+:root[dir="rtl"] .ae-emboss {
+  max-width: 100%;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: start;
+}
+:root[dir="rtl"] .ae-emboss {
+  text-align: center;
+}
