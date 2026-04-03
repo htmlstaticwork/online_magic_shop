@@ -109,8 +109,8 @@
             </nav>
 
             <div class="d-flex align-items-center gap-2">
-              <a class="ae-navlink" href="login.html">Login</a>
-              <a class="ae-navlink" href="register.html">Register</a>
+              <a class="ae-btn ae-btn--header" href="login.html">Login</a>
+              <a class="ae-btn ae-btn--header" href="register.html">Register</a>
               <button class="ae-icon-btn" type="button" data-ae-theme-toggle aria-label="Toggle theme" aria-pressed="false">
                 <i class="bi bi-sun-fill" aria-hidden="true"></i>
               </button>
@@ -135,8 +135,8 @@
                   })
                   .join("")}
                 <hr class="m-0" style="border-top:2px solid var(--ae-border);opacity:1" />
-                <a class="ae-navlink" href="login.html">Login</a>
-                <a class="ae-navlink" href="register.html">Register</a>
+                <a class="ae-btn ae-btn--header mt-2" href="login.html">Login</a>
+                <a class="ae-btn ae-btn--header mt-2" href="register.html">Register</a>
               </div>
             </nav>
           </div>

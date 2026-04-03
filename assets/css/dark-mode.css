@@ -12,6 +12,15 @@
   color:#FFFFFF;
 }
 
+:root[data-theme="dark"] .ae-dark-stage a{
+  color:#FFFFFF;
+}
+
+:root[data-theme="dark"] .ae-dark-stage .ae-btn--ghost{
+  border-color:#FFFFFF;
+  color:#FFFFFF;
+}
+
 :root[data-theme="dark"] .ae-offcanvas{
   border-inline-end-color:#FFFFFF;
 }
