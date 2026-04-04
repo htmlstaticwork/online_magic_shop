@@ -54,7 +54,7 @@ h3{font-size:clamp(24px,2.4vw,28px);line-height:1.25}
 
 .ae-border{border:2px solid var(--ae-border)}
 .ae-border-accent{border:2px solid var(--ae-accent)}
-.ae-surface{background:var(--ae-surface)}
+.ae-surface{background:var(--ae-surface);color:var(--ae-fg)}
 .ae-rounded{border-radius:var(--ae-radius)}
 .ae-rounded-sm{border-radius:var(--ae-radius-sm)}
 .ae-rounded-start{border-radius:var(--ae-radius) 0 0 var(--ae-radius)}
@@ -346,6 +346,7 @@ h3{font-size:clamp(24px,2.4vw,28px);line-height:1.25}
   border-radius:var(--ae-radius);
   padding:24px;
   background:var(--ae-surface);
+  color:var(--ae-fg);
   height:100%;
   display:flex;
   flex-direction:column;
