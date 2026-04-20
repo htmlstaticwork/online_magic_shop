@@ -1,0 +1,75 @@
+/* 
+  Smoke & Fog Atmosphere 
+  Creates a global, subtle, moving smoke layer for a mysterious feel.
+*/
+
+.ae-smoke-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1; /* Behind content but above some backgrounds */
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.ae-smoke-layer {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  animation: aeSmokeMove 20s linear infinite;
+}
+
+.ae-smoke-layer:nth-child(2) {
+  animation-duration: 35s;
+  animation-direction: reverse;
+  opacity: 0.6;
+}
+
+.ae-smoke-layer:nth-child(3) {
+  animation-duration: 25s;
+  animation-delay: -5s;
+  opacity: 0.3;
+}
+
+@keyframes aeSmokeMove {
+  0% {
+    transform: rotate(0deg) translate(0, 0) scale(1);
+  }
+  33% {
+    transform: rotate(10deg) translate(5%, -5%) scale(1.1);
+  }
+  66% {
+    transform: rotate(-10deg) translate(-5%, 5%) scale(0.9);
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0) scale(1);
+  }
+}
+
+/* Dark mode adjustments - make smoke darker/more etherial */
+[data-theme="dark"] .ae-smoke-container {
+  opacity: 0.3;
+  mix-blend-mode: lighten;
+}
+
+[data-theme="dark"] .ae-smoke-layer {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(167, 139, 250, 0.08) 0%, /* Violet tint */
+    rgba(167, 139, 250, 0.03) 50%,
+    transparent 80%
+  );
+}

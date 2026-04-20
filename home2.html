@@ -40,14 +40,17 @@
 
   <main id="main">
     <!-- Unique Hero Section -->
-    <section class="ae-section ae-section--full ae-dark-stage"
-      style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;">
-      <div class="ae-container">
+    <!-- Unique Hero Section -->
+    <section class="ae-section ae-section--full ae-dark-stage ae-hero-section ae-vault-hero"
+      style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/hero_home2.png') center/cover no-repeat;">
+      <div class="ae-container ae-vault-content">
         <div class="row min-vh-75 align-items-center justify-content-center">
-          <div class="col-lg-8 text-center">
-            <span class="ae-pill mb-3 d-inline-block" style="background:var(--ae-accent);color:var(--ae-bg)">Exclusive
+          <div class="col-lg-8 text-center ae-floating">
+            <span class="ae-pill mb-3 d-inline-block ae-magical-glow"
+              style="background:var(--ae-accent);color:#FFFFFF">Exclusive
               Collection</span>
-            <h1 class="ae-display mb-3" style="font-size: clamp(2.5rem, 8vw, 4.5rem);">The Master's <br>Private Vault
+            <h1 class="ae-display mb-3 ae-magical-glow" style="font-size: clamp(2.5rem, 8vw, 4.5rem);">The Master's
+              <br>Private Vault
             </h1>
             <p class="mt-3 mb-5 mx-auto" style="font-size:20px;max-width:70ch;line-height:1.6">
               Beyond the common slights lie the secrets of the masters. Professional-grade apparatus and methods refined
@@ -62,6 +65,7 @@
       </div>
     </section>
 
+
     <!-- Unique "Featured Secrets" Section -->
     <section class="ae-section">
       <div class="ae-container text-center">
@@ -75,43 +79,52 @@
           <a class="ae-btn ae-btn--ghost" href="services.html">View all 142 items</a>
         </div>
 
-        <div class="ae-grid-2x3">
-          <article class="ae-card">
+        <div class="ae-grid-mystic">
+          <article class="ae-card ae-card--mystic ae-float">
             <img class="ae-card-img" src="assets/images/ghost.jpg" alt="The Ghost Deck" />
             <div class="mt-3 d-flex align-items-center justify-content-center gap-2">
-              <h3 class="m-0 h5">The Ghost Deck</h3>
-              <span class="ae-pill">Elite</span>
+              <h3 class="m-0 h4">The Ghost Deck</h3>
+              <span class="ae-pill ae-skill--master">Elite</span>
             </div>
             <p class="mt-3 mb-4 opacity-75">A deck that breathes, moves, and reveals secrets only when the light is
               right.</p>
-            <div class="mt-auto d-flex align-items-center justify-content-center gap-3">
+            <div class="mt-0 d-flex align-items-center justify-content-center gap-3">
               <span class="ae-price">$45.00</span>
               <a class="ae-btn ae-btn--ghost" href="service-details.html">Details</a>
             </div>
           </article>
-
-          <article class="ae-card">
+ 
+          <article class="ae-card ae-card--mystic">
             <img class="ae-card-img" src="assets/images/mida.jpg" alt="Midas Touch" />
             <div class="mt-3 d-flex align-items-center justify-content-center gap-2">
               <h3 class="m-0 h5">Midas Touch</h3>
-              <span class="ae-pill">Master</span>
+              <span class="ae-pill ae-skill--master">Master</span>
             </div>
             <p class="mt-3 mb-4 opacity-75">Transform borrowed silver into gold in the spectator's own closed fist.</p>
-            <div class="mt-auto d-flex align-items-center justify-content-center gap-3">
+            <div class="mt-0 d-flex align-items-center justify-content-center gap-3">
               <span class="ae-price">$89.00</span>
               <a class="ae-btn ae-btn--ghost" href="service-details.html">Details</a>
             </div>
           </article>
-
-          <article class="ae-card">
+ 
+          <article class="ae-card ae-card--mystic">
+            <div class="d-flex flex-column">
+              <i class="bi bi-stars ae-accent mb-2" style="font-size: 24px;"></i>
+              <h3 class="m-0 h5">More to Discover</h3>
+              <p class="mt-2 mb-3 opacity-75 small">Unlock the full collection of professional tools.</p>
+              <a class="ae-btn ae-btn--ghost" href="services.html">Browse All</a>
+            </div>
+          </article>
+ 
+          <article class="ae-card ae-card--mystic ae-float" style="animation-delay: -2s;">
             <img class="ae-card-img" src="assets/images/envo.jfif" alt="Oracle's Envelope" />
             <div class="mt-3 d-flex align-items-center justify-content-center gap-2">
               <h3 class="m-0 h5">Oracle's Envelope</h3>
-              <span class="ae-pill">Mentalism</span>
+              <span class="ae-pill ae-skill--intermediate">Mentalism</span>
             </div>
             <p class="mt-3 mb-4 opacity-75">The cleanest prediction system ever devised. No switches, no electronics.
             </p>
-            <div class="mt-auto d-flex align-items-center justify-content-center gap-3">
+            <div class="mt-0 d-flex align-items-center justify-content-center gap-3">
               <span class="ae-price">$120.00</span>
               <a class="ae-btn ae-btn--ghost" href="service-details.html">Details</a>
             </div>
@@ -236,6 +249,20 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const hero = document.querySelector('.ae-vault-hero');
+      if (!hero) return;
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty('--mouse-x', x + '%');
+      hero.style.setProperty('--mouse-y', y + '%');
+    });
+  </script>
 </body>
+
+
+</html>
 
 </html>

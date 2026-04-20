@@ -1,12 +1,51 @@
 :root[data-theme="dark"]{
   --ae-bg:#000000;
   --ae-fg:#FFFFFF;
-  --ae-accent:#9B2C2C;
+  --ae-accent:#C084FC;
   --ae-surface:#12111A;
   --ae-border:var(--ae-fg);
+  --ae-magic-glow: rgba(192, 132, 252, 0.4);
+  --ae-magic-sparkle: #E879F9;
+  
+  /* Skill Level Accents (Dark) */
+  --ae-skill-beginner: #A1887F;
+  --ae-skill-intermediate: #94A3B8;
+  --ae-skill-master: #FCD34D;
+  
   color-scheme:dark;
+}
+
+:root[data-theme="dark"] .ae-skill--beginner { background: linear-gradient(135deg, var(--ae-surface), #2a1f1a); }
+:root[data-theme="dark"] .ae-skill--intermediate { background: linear-gradient(135deg, var(--ae-surface), #1e293b); }
+:root[data-theme="dark"] .ae-skill--master { background: linear-gradient(135deg, var(--ae-surface), #312e16); }
+
+:root[data-theme="dark"] .ae-dark-stage {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .ae-dark-stage a {
+  color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .ae-dark-stage .ae-btn--ghost {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 :root[data-theme="dark"] .ae-offcanvas{
   border-inline-end-color:#FFFFFF;
 }
+
+:root[data-theme="dark"] .ae-card--mystic {
+  background: rgba(18, 17, 26, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .ae-card--mystic:hover {
+  border-color: var(--ae-accent);
+  box-shadow: 0 0 40px var(--ae-magic-glow);
+}
+

@@ -129,11 +129,11 @@
             <nav aria-label="Mobile primary">
               <div class="d-grid gap-2">
                 ${navLinks
-                  .map((l) => {
-                    const current = l.key === page ? ' aria-current="page"' : "";
-                    return `<a class="ae-navlink" href="${l.href}"${current}>${l.label}</a>`;
-                  })
-                  .join("")}
+        .map((l) => {
+          const current = l.key === page ? ' aria-current="page"' : "";
+          return `<a class="ae-navlink" href="${l.href}"${current}>${l.label}</a>`;
+        })
+        .join("")}
                 <hr class="m-0" style="border-top:2px solid var(--ae-border);opacity:1" />
                 <a class="ae-btn ae-btn--header mt-2" href="login.html">Login</a>
                 <a class="ae-btn ae-btn--header mt-2" href="register.html">Register</a>
@@ -203,6 +203,13 @@
       <a class="ae-backtop" href="#" data-ae-backtop aria-label="Back to top">
         <i class="bi bi-arrow-up" aria-hidden="true"></i>
       </a>
+      <div class="ae-mana-bg"></div>
+      <canvas id="ae-magic-canvas"></canvas>
+      <div class="ae-smoke-container" data-ae-smoke>
+        <div class="ae-smoke-layer"></div>
+        <div class="ae-smoke-layer"></div>
+        <div class="ae-smoke-layer"></div>
+      </div>
     `;
 
     if (headerHost) headerHost.innerHTML = headerHtml;
@@ -452,6 +459,127 @@
     });
   };
 
+  const initMagicTrail = () => {
+    const canvas = document.getElementById("ae-magic-canvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let mouse = { x: 0, y: 0, active: false };
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    class Particle {
+      constructor(x, y, isBurst = false) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * (isBurst ? 5 : 1);
+        this.speedY = (Math.random() - 0.5) * (isBurst ? 5 : 1);
+        this.color = getComputedStyle(document.documentElement).getPropertyValue("--ae-magic-sparkle").trim() || "#FFD700";
+        this.opacity = 1;
+        this.life = 1;
+        this.decay = Math.random() * 0.02 + 0.01;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= this.decay;
+        this.opacity = this.life;
+        this.size *= 0.98;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+
+        // Draw a small diamond shape for "arcane" feel
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y - this.size);
+        ctx.lineTo(this.x + this.size, this.y);
+        ctx.lineTo(this.x, this.y + this.size);
+        ctx.lineTo(this.x - this.size, this.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (mouse.active) {
+        particles.push(new Particle(mouse.x, mouse.y));
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].life <= 0) {
+          particles.splice(i, 1);
+          i--;
+        }
+      }
+      requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    });
+
+    window.addEventListener("mousedown", (e) => {
+      for (let i = 0; i < 15; i++) {
+        particles.push(new Particle(e.clientX, e.clientY, true));
+      }
+    });
+
+    window.addEventListener("mouseout", () => { mouse.active = false; });
+    window.addEventListener("resize", resize);
+
+    resize();
+    animate();
+  };
+
+  const initMagicalInteractions = () => {
+    // Add pulsing glow to main headings
+    document.querySelectorAll("h1, h2").forEach(h => {
+      h.classList.add("ae-magic-glow-text");
+    });
+
+    // Add burst effect to all significant buttons
+    document.querySelectorAll(".ae-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.style.transform = "scale(0.95)";
+        setTimeout(() => btn.style.transform = "", 100);
+      });
+    });
+
+    // Global Torch Effect (Spotlight follows mouse)
+    window.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      document.documentElement.style.setProperty("--ae-mouse-x", x + "%");
+      document.documentElement.style.setProperty("--ae-mouse-y", y + "%");
+    });
+  };
+
+  const injectAtmosphericStyles = () => {
+    if (document.querySelector('link[href*="smoke.css"]')) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "assets/css/smoke.css";
+    document.head.appendChild(link);
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     injectChrome();
     initThemeAndDir();
@@ -465,5 +593,8 @@
     initShopFilter();
     initCountdown();
     initPasswordToggle();
+    initMagicTrail();
+    initMagicalInteractions();
+    injectAtmosphericStyles();
   });
 })();
